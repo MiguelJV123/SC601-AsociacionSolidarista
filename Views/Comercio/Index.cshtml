@@ -1,0 +1,86 @@
+﻿@model IEnumerable<proyecto.asociacionsolidarista.Models.Entities.Comercio>
+
+@{
+    ViewBag.Title = "Gestión de Asociados";
+}
+
+<h2>Gestión de Asociados</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Asociado", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CorreoElectronico)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+
+            <th>
+                Acciones
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identificacion)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CorreoElectronico)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+
+                <td>
+
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdComercio }) |
+
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdComercio }) |
+
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdComercio })
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
