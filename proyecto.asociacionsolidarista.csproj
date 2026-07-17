@@ -173,6 +173,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DbContexts\AsociacionSolidaristaDbContext.cs" />
+    <Compile Include="Infrastructure\Repositories\BitacoraEventosRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\CajaSINPERepository.cs" />
+    <Compile Include="Infrastructure\Repositories\ComercioRepository .cs" />
+    <Compile Include="Infrastructure\Repositories\IBitacoraEventosRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\ICajaSINPERepository.cs" />
+    <Compile Include="Infrastructure\Repositories\IComercioRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\IPagoSINPERepository.cs" />
+    <Compile Include="Infrastructure\Repositories\PagoSINPERepository.cs" />
+    <Compile Include="Infrastructure\Repositories\Repository.cs" />
+    <Compile Include="Infrastructure\Repositories\IRepository.cs" />
     <Compile Include="Migrations\202607172007330_InitialCreate.cs" />
     <Compile Include="Migrations\202607172007330_InitialCreate.Designer.cs">
       <DependentUpon>202607172007330_InitialCreate.cs</DependentUpon>
@@ -243,7 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Models\DTOs\" />
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Validators\" />
