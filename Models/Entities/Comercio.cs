@@ -26,5 +26,14 @@ namespace proyecto.asociacionsolidarista.Models.Entities
         public DateTime? FechaDeModificacion { get; set; }
 
         public int Estado { get; set; }
+
+        // Relaciones
+
+        public virtual ICollection<CajaSINPE> CajasSINPE { get; set; }
+
+        public Comercio()
+        {
+            CajasSINPE = new HashSet<CajaSINPE>();
+        }
     }
 }

@@ -177,7 +177,14 @@
     <Compile Include="Migrations\202607172007330_InitialCreate.Designer.cs">
       <DependentUpon>202607172007330_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202607172020190_AgregarEntidadesYRelaciones.cs" />
+    <Compile Include="Migrations\202607172020190_AgregarEntidadesYRelaciones.Designer.cs">
+      <DependentUpon>202607172020190_AgregarEntidadesYRelaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Entities\BitacoraEventos.cs" />
+    <Compile Include="Models\Entities\PagoSINPE.cs" />
+    <Compile Include="Models\Entities\CajaSINPE.cs" />
     <Compile Include="Models\Entities\Comercio.cs" />
     <Compile Include="Models\Identity\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -271,6 +278,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202607172007330_InitialCreate.resx">
       <DependentUpon>202607172007330_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202607172020190_AgregarEntidadesYRelaciones.resx">
+      <DependentUpon>202607172020190_AgregarEntidadesYRelaciones.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
