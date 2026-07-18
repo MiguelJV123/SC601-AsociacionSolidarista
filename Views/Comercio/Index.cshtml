@@ -1,45 +1,49 @@
 ﻿@model IEnumerable<proyecto.asociacionsolidarista.Models.Entities.Comercio>
 
 @{
-    ViewBag.Title = "Gestión de Asociados";
+    ViewBag.Title = "Gestión de Comercios";
 }
 
-<h2>Gestión de Asociados</h2>
+<h2>Gestión de Comercios</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
 
 <p>
-    @Html.ActionLink("Nuevo Asociado", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Nuevo Comercio", "Create", null, new { @class = "btn btn-primary" })
 </p>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped table-hover">
 
     <thead>
+
         <tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Identificacion)
-            </th>
+            <th>Identificación</th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
+            <th>Nombre</th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
+            <th>Teléfono</th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.CorreoElectronico)
-            </th>
+            <th>Correo Electrónico</th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
+            <th>Estado</th>
 
-            <th>
-                Acciones
-            </th>
+            <th width="260">Acciones</th>
 
         </tr>
+
     </thead>
 
     <tbody>
@@ -48,33 +52,45 @@
         {
             <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Identificacion)
-                </td>
+                <td>@item.Identificacion</td>
+
+                <td>@item.Nombre</td>
+
+                <td>@item.Telefono</td>
+
+                <td>@item.CorreoElectronico</td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.CorreoElectronico)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
+                    @(item.Estado == 1 ? "Activo" : "Inactivo")
                 </td>
 
                 <td>
 
-                    @Html.ActionLink("Editar", "Edit", new { id = item.IdComercio }) |
+                    @Html.ActionLink(
+                        "Ver",
+                        "Details",
+                        new { id = item.IdComercio },
+                        new { @class = "btn btn-info btn-xs" })
 
-                    @Html.ActionLink("Detalles", "Details", new { id = item.IdComercio }) |
+                    @Html.Raw(" ")
 
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdComercio })
+                    @Html.ActionLink(
+                        "Editar",
+                        "Edit",
+                        new { id = item.IdComercio },
+                        new { @class = "btn btn-warning btn-xs" })
+
+                    @Html.Raw(" ")
+
+                    @using (Html.BeginForm("Delete", "Comercio", new { id = item.IdComercio }, FormMethod.Post, new { style = "display:inline;" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit"
+                               value="Eliminar"
+                               class="btn btn-danger btn-xs"
+                               onclick="return confirm('¿Desea eliminar este comercio?');" />
+                    }
 
                 </td>
 

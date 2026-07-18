@@ -1,0 +1,58 @@
+﻿@model proyecto.asociacionsolidarista.Models.Entities.Comercio
+
+@{
+    ViewBag.Title = "Detalle del Comercio";
+}
+
+<h2>Detalle del Comercio</h2>
+
+<div>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+
+        <dt>Identificación</dt>
+        <dd>@Model.Identificacion</dd>
+
+        <dt>Tipo Identificación</dt>
+        <dd>@Model.TipoIdentificacion</dd>
+
+        <dt>Nombre</dt>
+        <dd>@Model.Nombre</dd>
+
+        <dt>Teléfono</dt>
+        <dd>@Model.Telefono</dd>
+
+        <dt>Correo Electrónico</dt>
+        <dd>@Model.CorreoElectronico</dd>
+
+        <dt>Dirección</dt>
+        <dd>@Model.Direccion</dd>
+
+        <dt>Fecha Registro</dt>
+        <dd>@Model.FechaDeRegistro</dd>
+
+        <dt>Fecha Modificación</dt>
+        <dd>@Model.FechaDeModificacion</dd>
+
+        <dt>Estado</dt>
+        <dd>@Model.Estado</dd>
+
+    </dl>
+
+</div>
+
+<p>
+
+    @Html.ActionLink("Editar",
+                     "Edit",
+                     new { id = Model.IdComercio },
+                     new { @class = "btn btn-warning" })
+
+    @Html.ActionLink("Volver",
+                     "Index",
+                     null,
+                     new { @class = "btn btn-default" })
+
+</p>
