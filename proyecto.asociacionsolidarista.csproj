@@ -168,6 +168,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BitacoraController.cs" />
     <Compile Include="Controllers\CajaSINPEController.cs" />
     <Compile Include="Controllers\ComercioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -267,6 +268,8 @@
     <Content Include="Views\PagoSINPE\Edit.cshtml" />
     <Content Include="Views\PagoSINPE\Details.cshtml" />
     <Content Include="Views\PagoSINPE\Delete.cshtml" />
+    <Content Include="Views\Bitacora\Index.cshtml" />
+    <Content Include="Views\Bitacora\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
