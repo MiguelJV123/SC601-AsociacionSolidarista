@@ -258,6 +258,7 @@
     <Content Include="Views\Comercio\Create.cshtml" />
     <Content Include="Views\Comercio\Edit.cshtml" />
     <Content Include="Views\Comercio\Details.cshtml" />
+    <Content Include="Views\Comercio\Delete.cshtml" />
     <Content Include="Views\CajaSINPE\Index.cshtml" />
     <Content Include="Views\CajaSINPE\Create.cshtml" />
     <Content Include="Views\CajaSINPE\Edit.cshtml" />

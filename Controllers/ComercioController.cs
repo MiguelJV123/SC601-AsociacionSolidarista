@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Web.Mvc;
 using proyecto.asociacionsolidarista.Infrastructure.DbContexts;
 using proyecto.asociacionsolidarista.Infrastructure.Repositories;
@@ -99,9 +99,18 @@ namespace proyecto.asociacionsolidarista.Controllers
             return View(comercio);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult Delete(int id)
+        {
+            var comercio = _repository.GetById(id);
+            if (comercio == null) return HttpNotFound();
+
+            return View(comercio);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
             var comercio = _repository.GetById(id);
 
@@ -111,9 +120,12 @@ namespace proyecto.asociacionsolidarista.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            _repository.Remove(comercio);
+            // Implementacion de Borrado Logico (Soft-Delete)
+            comercio.Estado = 0; 
+            comercio.FechaDeModificacion = DateTime.Now;
+            _repository.Update(comercio);
 
-            TempData["Success"] = "Comercio eliminado correctamente.";
+            TempData["Success"] = "Comercio desactivado correctamente.";
 
             return RedirectToAction(nameof(Index));
         }

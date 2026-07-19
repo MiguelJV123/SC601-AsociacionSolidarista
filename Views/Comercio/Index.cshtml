@@ -1,4 +1,4 @@
-﻿@model IEnumerable<proyecto.asociacionsolidarista.Models.Entities.Comercio>
+@model IEnumerable<proyecto.asociacionsolidarista.Models.Entities.Comercio>
 
 @{
     ViewBag.Title = "Gestión de Comercios";
@@ -82,15 +82,11 @@
 
                     @Html.Raw(" ")
 
-                    @using (Html.BeginForm("Delete", "Comercio", new { id = item.IdComercio }, FormMethod.Post, new { style = "display:inline;" }))
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <input type="submit"
-                               value="Eliminar"
-                               class="btn btn-danger btn-xs"
-                               onclick="return confirm('¿Desea eliminar este comercio?');" />
-                    }
+                    @Html.ActionLink(
+                        "Eliminar",
+                        "Delete",
+                        new { id = item.IdComercio },
+                        new { @class = "btn btn-danger btn-xs" })
 
                 </td>
 
