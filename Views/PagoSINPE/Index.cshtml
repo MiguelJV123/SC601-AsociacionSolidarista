@@ -1,0 +1,89 @@
+@model IEnumerable<proyecto.asociacionsolidarista.Models.Entities.PagoSINPE>
+
+@{
+    ViewBag.Title = "Pagos SINPE";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Pagos SINPE</h2>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Nuevo Pago</a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Caja / Comercio</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (item.CajaSINPE != null)
+                            {
+                                @item.CajaSINPE.Nombre<br />
+                                <small class="text-muted">
+                                    @(item.CajaSINPE.Comercio != null ? item.CajaSINPE.Comercio.Nombre : "Sin comercio")
+                                </small>
+                            }
+                            else
+                            {
+                                <span>Sin asignar</span>
+                            }
+                        </td>
+                        <td>
+                            @item.NombreOrigen<br />
+                            <small class="text-muted">@item.TelefonoOrigen</small>
+                        </td>
+                        <td>
+                            @item.NombreDestinatario<br />
+                            <small class="text-muted">@item.TelefonoDestinatario</small>
+                        </td>
+                        <td>@item.Monto.ToString("C")</td>
+                        <td>@item.FechaDeRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            @if (item.Estado == 1)
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactivo</span>
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.IdSinpe })" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="@Url.Action("Details", new { id = item.IdSinpe })" class="btn btn-sm btn-info">Detalles</a>
+                            <a href="@Url.Action("Delete", new { id = item.IdSinpe })" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

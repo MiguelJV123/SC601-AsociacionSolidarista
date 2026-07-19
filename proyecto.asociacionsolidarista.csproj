@@ -171,6 +171,7 @@
     <Compile Include="Controllers\CajaSINPEController.cs" />
     <Compile Include="Controllers\ComercioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PagoSINPEController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,6 +262,11 @@
     <Content Include="Views\CajaSINPE\Edit.cshtml" />
     <Content Include="Views\CajaSINPE\Details.cshtml" />
     <Content Include="Views\CajaSINPE\Delete.cshtml" />
+    <Content Include="Views\PagoSINPE\Index.cshtml" />
+    <Content Include="Views\PagoSINPE\Create.cshtml" />
+    <Content Include="Views\PagoSINPE\Edit.cshtml" />
+    <Content Include="Views\PagoSINPE\Details.cshtml" />
+    <Content Include="Views\PagoSINPE\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

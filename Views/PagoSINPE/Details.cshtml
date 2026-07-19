@@ -1,0 +1,60 @@
+@model proyecto.asociacionsolidarista.Models.Entities.PagoSINPE
+
+@{
+    ViewBag.Title = "Detalles del Pago SINPE";
+}
+
+<div class="container mt-4">
+    <h2>Detalles del Pago SINPE</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">Caja SINPE</dt>
+                <dd class="col-sm-8">@(Model.CajaSINPE != null ? Model.CajaSINPE.Nombre : "Sin asignar")</dd>
+
+                <dt class="col-sm-4">Comercio Asociado</dt>
+                <dd class="col-sm-8">@(Model.CajaSINPE != null && Model.CajaSINPE.Comercio != null ? Model.CajaSINPE.Comercio.Nombre : "Sin comercio")</dd>
+
+                <dt class="col-sm-4">Telefono Origen</dt>
+                <dd class="col-sm-8">@Model.TelefonoOrigen</dd>
+
+                <dt class="col-sm-4">Nombre Origen</dt>
+                <dd class="col-sm-8">@Model.NombreOrigen</dd>
+
+                <dt class="col-sm-4">Telefono Destinatario</dt>
+                <dd class="col-sm-8">@Model.TelefonoDestinatario</dd>
+
+                <dt class="col-sm-4">Nombre Destinatario</dt>
+                <dd class="col-sm-8">@Model.NombreDestinatario</dd>
+
+                <dt class="col-sm-4">Monto</dt>
+                <dd class="col-sm-8">@Model.Monto.ToString("C")</dd>
+
+                <dt class="col-sm-4">Descripcion</dt>
+                <dd class="col-sm-8">@(string.IsNullOrEmpty(Model.Descripcion) ? "N/A" : Model.Descripcion)</dd>
+
+                <dt class="col-sm-4">Fecha de Registro</dt>
+                <dd class="col-sm-8">@Model.FechaDeRegistro.ToString("dd/MM/yyyy HH:mm")</dd>
+
+                <dt class="col-sm-4">Estado</dt>
+                <dd class="col-sm-8">
+                    @if (Model.Estado == 1)
+                    {
+                        <span class="badge bg-success">Activo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Anulado</span>
+                    }
+                </dd>
+            </dl>
+
+            <div class="mt-3">
+                <a href="@Url.Action("Edit", new { id = Model.IdSinpe })" class="btn btn-warning">Editar</a>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la lista</a>
+            </div>
+        </div>
+    </div>
+</div>
