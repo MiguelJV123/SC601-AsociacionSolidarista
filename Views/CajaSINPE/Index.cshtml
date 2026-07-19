@@ -1,0 +1,67 @@
+@model IEnumerable<proyecto.asociacionsolidarista.Models.Entities.CajaSINPE>
+
+@{
+    ViewBag.Title = "Cajas SINPE";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Cajas SINPE</h2>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Nueva Caja</a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Comercio</th>
+                    <th>Telefono SINPE</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@(item.Comercio != null ? item.Comercio.Nombre : "Sin asignar")</td>
+                        <td>@item.TelefonoSINPE</td>
+                        <td>
+                            @if (item.Estado == 1)
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactivo</span>
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.IdCaja })" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="@Url.Action("Details", new { id = item.IdCaja })" class="btn btn-sm btn-info">Detalles</a>
+                            <a href="@Url.Action("Delete", new { id = item.IdCaja })" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
