@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -19,6 +19,10 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Comercios", "Index", "Comercio", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Cajas SINPE", "Index", "CajaSINPE", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Pagos SINPE", "Index", "PagoSINPE", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Bitacora", "Index", "Bitacora", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>

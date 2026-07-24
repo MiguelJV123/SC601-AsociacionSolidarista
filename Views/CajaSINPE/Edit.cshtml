@@ -1,0 +1,60 @@
+@model proyecto.asociacionsolidarista.Models.Entities.CajaSINPE
+
+@{
+    ViewBag.Title = "Editar Caja SINPE";
+}
+
+<div class="container mt-4">
+    <h2>Editar Caja SINPE</h2>
+    <hr />
+
+    @using (Html.BeginForm("Edit", "CajaSINPE", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.IdCaja)
+        @Html.HiddenFor(m => m.FechaDeRegistro)
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.IdComercio, "Comercio Asociado", new { @class = "form-label" })
+                    @Html.DropDownList("IdComercio", null, "Seleccione un Comercio", htmlAttributes: new { @class = "form-select", required = "required" })
+                    @Html.ValidationMessageFor(m => m.IdComercio, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Nombre, "Nombre de Caja", new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", required = "required", maxlength = "100" })
+                    @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Descripcion, "Descripcion", new { @class = "form-label" })
+                    @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control", required = "required", maxlength = "150", rows = "3" })
+                    @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.TelefonoSINPE, "Telefono SINPE", new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.TelefonoSINPE, new { @class = "form-control", required = "required", maxlength = "10" })
+                    @Html.ValidationMessageFor(m => m.TelefonoSINPE, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Estado, "Estado", new { @class = "form-label" })
+                    @Html.DropDownListFor(m => m.Estado, new SelectList(new[]
+                    {
+                        new { Value = "1", Text = "Activo" },
+                        new { Value = "0", Text = "Inactivo" }
+                    }, "Value", "Text"), new { @class = "form-select" })
+                    @Html.ValidationMessageFor(m => m.Estado, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

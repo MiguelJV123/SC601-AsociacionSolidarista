@@ -1,0 +1,54 @@
+@model proyecto.asociacionsolidarista.Models.Entities.BitacoraEventos
+
+@{
+    ViewBag.Title = "Detalles del Evento";
+}
+
+<div class="container mt-4">
+    <h2>Detalles del Evento</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-10">
+            <dl class="row">
+                <dt class="col-sm-3">ID Evento</dt>
+                <dd class="col-sm-9">@Model.IdEvento</dd>
+
+                <dt class="col-sm-3">Fecha</dt>
+                <dd class="col-sm-9">@Model.FechaDeEvento.ToString("dd/MM/yyyy HH:mm:ss")</dd>
+
+                <dt class="col-sm-3">Tabla</dt>
+                <dd class="col-sm-9">@Model.TablaDeEvento</dd>
+
+                <dt class="col-sm-3">Tipo de Evento</dt>
+                <dd class="col-sm-9">@Model.TipoDeEvento</dd>
+
+                <dt class="col-sm-3">Pago Relacionado</dt>
+                <dd class="col-sm-9">
+                    @(Model.IdSinpe.HasValue ? "Pago ID: " + Model.IdSinpe.ToString() : "Sin asignar")
+                </dd>
+
+                <dt class="col-sm-3">Descripcion</dt>
+                <dd class="col-sm-9">@Model.DescripcionDeEvento</dd>
+            </dl>
+
+            <h4>Datos Anteriores</h4>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <pre style="white-space: pre-wrap; font-family: monospace;">@(string.IsNullOrEmpty(Model.DatosAnteriores) ? "Sin datos" : Model.DatosAnteriores)</pre>
+                </div>
+            </div>
+
+            <h4>Datos Posteriores</h4>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <pre style="white-space: pre-wrap; font-family: monospace;">@(string.IsNullOrEmpty(Model.DatosPosteriores) ? "Sin datos" : Model.DatosPosteriores)</pre>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la lista</a>
+            </div>
+        </div>
+    </div>
+</div>

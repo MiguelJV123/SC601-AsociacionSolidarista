@@ -1,0 +1,37 @@
+@model proyecto.asociacionsolidarista.Models.Entities.CajaSINPE
+
+@{
+    ViewBag.Title = "Eliminar Caja SINPE";
+}
+
+<div class="container mt-4">
+    <h2>Eliminar Caja SINPE</h2>
+    <h3 class="text-danger">Seguro que desea eliminar esta Caja SINPE?</h3>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">Comercio Asociado</dt>
+                <dd class="col-sm-8">@(Model.Comercio != null ? Model.Comercio.Nombre : "Sin asignar")</dd>
+
+                <dt class="col-sm-4">Nombre</dt>
+                <dd class="col-sm-8">@Model.Nombre</dd>
+
+                <dt class="col-sm-4">Telefono SINPE</dt>
+                <dd class="col-sm-8">@Model.TelefonoSINPE</dd>
+            </dl>
+
+            @using (Html.BeginForm("Delete", "CajaSINPE", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.IdCaja)
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
